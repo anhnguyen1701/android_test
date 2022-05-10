@@ -19,9 +19,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new FragmentThongTin();
-            case 1:
                 return new FragmentDanhSach();
+            case 1:
+                return new FragmentThongTin();
             case 2:
                 return new FragmentSearch();
         }
