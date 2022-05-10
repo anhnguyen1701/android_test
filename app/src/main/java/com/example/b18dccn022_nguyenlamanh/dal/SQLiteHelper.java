@@ -90,4 +90,42 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         return sqLiteDatabase.delete("items", whereClause, whereArgs);
     }
+
+    //search item by title
+    public List<Item> searchByTitle(String key) {
+        List<Item> list = new ArrayList<>();
+        String whereClause = "ten like ?";
+        String[] whereArgs = {"%" + key + "%"};
+        String order = "date DESC";
+        SQLiteDatabase st = getReadableDatabase();
+        Cursor rs = st.query("items", null, whereClause, whereArgs, null, null, order);
+        while (rs != null && rs.moveToNext()) {
+            int id = rs.getInt(0);
+            String ten = rs.getString(1);
+            String noidung = rs.getString(2);
+            String date = rs.getString(3);
+            String tinhtrang = rs.getString(4);
+            int congtac = rs.getInt(5);
+            list.add(new Item(id, ten, noidung, date, tinhtrang, congtac));
+        }
+        return list;
+    }
+
+    //search item by category
+    public List<Item> searchByCategory(String tinhtrang) {
+        List<Item> list = new ArrayList<>();
+        String whereClause = "tinhtrang like ?";
+        String[] whereArgs = {tinhtrang};
+        SQLiteDatabase st = getReadableDatabase();
+        Cursor rs = st.query("items", null, whereClause, whereArgs, null, null, null);
+        while (rs != null && rs.moveToNext()) {
+            int id = rs.getInt(0);
+            String ten = rs.getString(1);
+            String noidung = rs.getString(2);
+            String date = rs.getString(3);
+            int congtac = rs.getInt(5);
+            list.add(new Item(id, ten, noidung, date, tinhtrang, congtac));
+        }
+        return list;
+    }
 }
