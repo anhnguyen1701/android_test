@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/mHome"
-        android:title="HOM NAY"
+        android:title="Danh sách"
         android:icon="@drawable/ic_today"
         ></item>
     <item
         android:id="@+id/mHistory"
-        android:title="LICH SU"
+        android:title="Thông tin"
         android:icon="@drawable/ic_history"
         ></item>
     <item
         android:id="@+id/mSearch"
-        android:title="TIM KIEM"
+        android:title="Tìm kiếm"
         android:icon="@drawable/ic_search"
         ></item>
 </menu>
