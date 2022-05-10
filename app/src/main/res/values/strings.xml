@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">B18DCCN022_NguyenLamAnh</string>
+    <string-array name="category">
+        <item>Chưa thực hiện</item>
+        <item>Đang thực hiện</item>
+        <item>Hoàn thành</item>
+    </string-array>
 </resources>
