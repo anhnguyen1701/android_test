@@ -74,4 +74,16 @@ public class Item implements Serializable {
     public void setCongtac(int congtac) {
         this.congtac = congtac;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", ten='" + ten + '\'' +
+                ", noidung='" + noidung + '\'' +
+                ", date='" + date + '\'' +
+                ", tinhtrang='" + tinhtrang + '\'' +
+                ", congtac=" + congtac +
+                '}';
+    }
 }

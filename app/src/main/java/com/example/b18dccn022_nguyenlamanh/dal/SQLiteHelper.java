@@ -1,5 +1,6 @@
 package com.example.b18dccn022_nguyenlamanh.dal;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -64,5 +65,29 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             list.add(new Item(id, ten, noidung, date, tinhtrang, congtac));
         }
         return list;
+    }
+
+    //update
+    public int update(Item i) {
+        ContentValues values = new ContentValues();
+        values.put("ten", i.getTen());
+        values.put("noidung", i.getNoidung());
+        values.put("date", i.getDate());
+        values.put("tinhtrang", i.getDate());
+        values.put("congtac", i.getCongtac());
+
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String whereClause = "id=?";
+        String[] whereArgs = {Integer.toString(i.getId())};
+
+        return sqLiteDatabase.update("items", values, whereClause, whereArgs);
+    }
+
+    //delete
+    public int delete(int id) {
+        String whereClause = "id=?";
+        String[] whereArgs = {Integer.toString(id)};
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        return sqLiteDatabase.delete("items", whereClause, whereArgs);
     }
 }

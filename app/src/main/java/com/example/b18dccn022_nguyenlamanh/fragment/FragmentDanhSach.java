@@ -1,5 +1,6 @@
 package com.example.b18dccn022_nguyenlamanh.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.b18dccn022_nguyenlamanh.R;
+import com.example.b18dccn022_nguyenlamanh.UpdateDeleteActivity;
 import com.example.b18dccn022_nguyenlamanh.adapter.RecycleViewAdapter;
 import com.example.b18dccn022_nguyenlamanh.dal.SQLiteHelper;
 import com.example.b18dccn022_nguyenlamanh.model.Item;
@@ -44,7 +46,7 @@ public class FragmentDanhSach extends Fragment implements RecycleViewAdapter.Ite
         //show list in layout
         List<Item> list = db.getAll();
         adapter.setList(list);
-        Log.d("list", String.valueOf(list));
+        Log.d("list", String.valueOf(list.get(0).toString()));
 
         //make recycleviewAdapter run
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
@@ -64,6 +66,10 @@ public class FragmentDanhSach extends Fragment implements RecycleViewAdapter.Ite
 
     @Override
     public void onItemClick(View view, int position) {
-
+        Item item = adapter.getItem(position);
+        Intent intent = new Intent(getActivity(), UpdateDeleteActivity.class);
+        Log.d("item", String.valueOf(item.toString()));
+        intent.putExtra("item", item);
+        startActivity(intent);
     }
 }
