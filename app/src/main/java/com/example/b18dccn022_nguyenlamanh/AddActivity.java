@@ -92,7 +92,7 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
             }
 
             if (!ten.isEmpty()) {
-                Item i = new Item(ten, noidung, tinhtrang, date, congtac);
+                Item i = new Item(ten, noidung, date, tinhtrang, congtac);
                 SQLiteHelper db = new SQLiteHelper(this);
                 db.addItem(i);
                 finish();
