@@ -35,8 +35,14 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         holder.ten.setText(item.getTen());
         holder.tinhtrang.setText(item.getTinhtrang());
         holder.date.setText(item.getDate());
-        holder.congtac.setText(item.getCongtac());
         holder.noidung.setText(item.getNoidung());
+
+        String congtac = "Làm một mình";
+        if (item.getCongtac() == 1) {
+            congtac = "Làm chung";
+        }
+
+        holder.congtac.setText(congtac);
     }
 
     @Override
